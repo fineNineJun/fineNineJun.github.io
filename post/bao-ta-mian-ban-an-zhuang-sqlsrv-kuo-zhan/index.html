@@ -1,0 +1,244 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>宝塔面板安装 sqlsrv 扩展 | { 59-Jun }</title>
+<link rel="shortcut icon" href="https://fineninejun.github.io/favicon.ico?v=1649400508282">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fineninejun.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="宝塔面板安装 sqlsrv 扩展 | { 59-Jun } - Atom Feed" href="https://fineninejun.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+宝塔面板安装 sqlsrv 扩展，php=7.3
+
+
+加入源
+curl https://packages.microsoft.com/config/rhel/7/prod.repo &gt; /etc/yum.repos.d/mssqlr..." />
+    <meta name="keywords" content="bt-panel,sqlsrv,php" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://fineninejun.github.io">
+  <img class="avatar" src="https://fineninejun.github.io/images/avatar.png?v=1649400508282" alt="">
+  </a>
+  <h1 class="site-title">
+    { 59-Jun }
+  </h1>
+  <p class="site-description">
+    所有事情到最後都是好的，如果不是，那說明還沒有到最後…
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/fineNineJun" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              宝塔面板安装 sqlsrv 扩展
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-03-02
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://fineninejun.github.io/tag/Owmt2sFBN/" class="post-tag">
+                  # bt-panel
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/GBgLgoZIF7/" class="post-tag">
+                  # sqlsrv
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/YJ6eaLBBX/" class="post-tag">
+                  # php
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
+<p>宝塔面板安装 <code>sqlsrv</code> 扩展，<code>php=7.3</code></p>
+</blockquote>
+<!-- more -->
+<h1 id="加入源">加入源</h1>
+<pre><code class="language-shell">curl https://packages.microsoft.com/config/rhel/7/prod.repo &gt; /etc/yum.repos.d/mssqlrelease.repo
+</code></pre>
+<p>当前安装的版本为 php7.3 及以上的，如果发现这个链接失效了或者你需要其他版本的，可以到https://packages.microsoft.com/config/rhel/ (opens new window)</p>
+<h1 id="安装驱动">安装驱动</h1>
+<pre><code class="language-shell">yum install msodbcsql mssql-tools unixODBC-devel
+</code></pre>
+<h1 id="下载-pdo_sqlsrv-扩展包">下载 pdo_sqlsrv 扩展包</h1>
+<pre><code class="language-shell">wget http://pecl.php.net/get/pdo_sqlsrv-5.8.1.tgz
+</code></pre>
+<p>更多版本：http://pecl.php.net/package/pdo_sqlsrv (opens new window)</p>
+<h1 id="安装-pdo_sqlsrv-扩展">安装 pdo_sqlsrv 扩展</h1>
+<h2 id="解压扩展包">解压扩展包</h2>
+<pre><code class="language-shell">tar -zxvf pdo_sqlsrv-5.8.1.tgz
+cd pdo_sqlsrv-5.8.1
+</code></pre>
+<h2 id="编译安装">编译安装</h2>
+<pre><code class="language-shell">/www/server/php/73/bin/phpize
+./configure --with-php-config=/www/server/php/73/bin/php-config
+make &amp;&amp; make install
+</code></pre>
+<h1 id="添加到-phpini">添加到 php.ini</h1>
+<h2 id="将扩展添加到-phpini">将扩展添加到 php.ini</h2>
+<pre><code class="language-shell">echo &quot;extension = pdo_sqlsrv.so&quot; &gt;&gt; /www/server/php/73/etc/php.ini
+</code></pre>
+<h2 id="重启-php-fpm">重启 php-fpm</h2>
+<pre><code class="language-shell">/etc/init.d/php-fpm-73 reload
+</code></pre>
+<h2 id="检查扩展安装状态或者可以进入phpinfo中查看">检查扩展安装状态或者可以进入phpinfo()中查看</h2>
+<pre><code class="language-shell">/www/server/php/73/bin/php -m|grep -i  sqlsrv
+</code></pre>
+<h1 id="清理安装包">清理安装包</h1>
+<pre><code class="language-shell">cd ..
+rm -rf pdo_sqlsrv-5.8.1
+rm -rf pdo_sqlsrv-5.8.1.tgz
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%8A%A0%E5%85%A5%E6%BA%90">加入源</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8">安装驱动</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BD-pdo_sqlsrv-%E6%89%A9%E5%B1%95%E5%8C%85">下载 pdo_sqlsrv 扩展包</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-pdo_sqlsrv-%E6%89%A9%E5%B1%95">安装 pdo_sqlsrv 扩展</a>
+<ul>
+<li><a href="#%E8%A7%A3%E5%8E%8B%E6%89%A9%E5%B1%95%E5%8C%85">解压扩展包</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85">编译安装</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%88%B0-phpini">添加到 php.ini</a>
+<ul>
+<li><a href="#%E5%B0%86%E6%89%A9%E5%B1%95%E6%B7%BB%E5%8A%A0%E5%88%B0-phpini">将扩展添加到 php.ini</a></li>
+<li><a href="#%E9%87%8D%E5%90%AF-php-fpm">重启 php-fpm</a></li>
+<li><a href="#%E6%A3%80%E6%9F%A5%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E7%8A%B6%E6%80%81%E6%88%96%E8%80%85%E5%8F%AF%E4%BB%A5%E8%BF%9B%E5%85%A5phpinfo%E4%B8%AD%E6%9F%A5%E7%9C%8B">检查扩展安装状态或者可以进入phpinfo()中查看</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B8%85%E7%90%86%E5%AE%89%E8%A3%85%E5%8C%85">清理安装包</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fineninejun.github.io/post/php-guo-lu-te-shu-fu-hao/">
+              <h3 class="post-title">
+                PHP 过滤特殊符号
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  @<a href="https://github.com/fineNineJun" target="_blank" style="padding-left: 5px;">fineNineJun</a>
+  <a class="rss" href="https://fineninejun.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

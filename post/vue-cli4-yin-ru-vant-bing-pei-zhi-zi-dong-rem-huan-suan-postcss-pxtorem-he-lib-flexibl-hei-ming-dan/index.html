@@ -1,0 +1,267 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue cli4引入vant并配置自动rem换算 postcss-pxtorem和lib-flexible + 黑名单 | { 59-Jun }</title>
+<link rel="shortcut icon" href="https://fineninejun.github.io/favicon.ico?v=1649400508282">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fineninejun.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="vue cli4引入vant并配置自动rem换算 postcss-pxtorem和lib-flexible + 黑名单 | { 59-Jun } - Atom Feed" href="https://fineninejun.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+在引入 vant 的时候，我看到官方推荐了两个自动转换 px 为 rem 的插件，一个叫 postcss-pxtorem ，一个叫 lib-flexible 。
+
+
+安装插件
+
+安装 postcss-pxtorem
+
+npm instal..." />
+    <meta name="keywords" content="vue,vant,postcss-pxtorem,lib-flexible" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://fineninejun.github.io">
+  <img class="avatar" src="https://fineninejun.github.io/images/avatar.png?v=1649400508282" alt="">
+  </a>
+  <h1 class="site-title">
+    { 59-Jun }
+  </h1>
+  <p class="site-description">
+    所有事情到最後都是好的，如果不是，那說明還沒有到最後…
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/fineNineJun" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue cli4引入vant并配置自动rem换算 postcss-pxtorem和lib-flexible + 黑名单
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-03-02
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://fineninejun.github.io/tag/CjNbqm_I0/" class="post-tag">
+                  # vue
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/1zMSfPMtxS/" class="post-tag">
+                  # vant
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/oss3fH1Mdl/" class="post-tag">
+                  # postcss-pxtorem
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/Vixx9z2zbD/" class="post-tag">
+                  # lib-flexible
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
+<p>在引入 <code>vant</code> 的时候，我看到官方推荐了两个自动转换 <code>px</code> 为 <code>rem</code> 的插件，一个叫 <code>postcss-pxtorem</code> ，一个叫 <code>lib-flexible</code> 。</p>
+</blockquote>
+<!-- more -->
+<h1 id="安装插件">安装插件</h1>
+<ul>
+<li>安装 <code>postcss-pxtorem</code></li>
+</ul>
+<pre><code>npm install postcss-pxtorem --save-dev
+</code></pre>
+<p>安装 <code>lib-flexible</code>，由于时间的问题， <code>lib-flexible</code> 其实已经弃用了，现在是使用名为 <code>amfe-flexible</code> 的插件， <code>amfe-flexible</code> 实际上就是在 <code>lib-flexible</code> 的基础上更新的，所以用法都是一样。</p>
+<pre><code>npm i -s  amfe-flexible
+</code></pre>
+<ul>
+<li>安装完毕只需要引入amfe-flexible</li>
+</ul>
+<h1 id="引入插件">引入插件</h1>
+<ul>
+<li><code>main.js</code> 文件引入：</li>
+</ul>
+<pre><code>import 'amfe-flexible'
+</code></pre>
+<h1 id="创建配置文件">创建配置文件</h1>
+<p>在根目录，和 <code>package.json</code> 同级，创建一个名为 <code>postcss.config.js</code> 的文件，然后里面的内容我直接照搬 <code>vant</code> 提供的。</p>
+<p>如果有这个文件，可以自行修改里面的内容，没有才创建。</p>
+<pre><code>module.exports = {
+  plugins: {
+    autoprefixer: {
+      browsers: ['Android &gt;= 4.0', 'iOS &gt;= 8'],
+    },
+    'postcss-pxtorem': {
+      rootValue: 37.5,
+      propList: ['*'],
+    },
+  },
+};
+</code></pre>
+<p>然后保存，这个时候我们再去 <code>vue</code> 里面，对元素设置 <code>px</code>，运行时会发现网页上自动转换成了 <code>rem</code> 单位。</p>
+<p>百度到一个新的配置</p>
+<pre><code>module.exports = {
+  plugins: {
+    'autoprefixer': {
+      overrideBrowserslist: [
+        'Android 4.1',
+        'iOS 7.1',
+        'Chrome &gt; 31',
+        'ff &gt; 31',
+        'ie &gt;= 8'
+      ]
+    },
+    'postcss-pxtorem': {
+      rootValue: 37.5,
+      propList: ['*']
+    }
+  }
+}
+</code></pre>
+<h1 id="黑名单">黑名单</h1>
+<p>顾名思义，在黑名单中的类名，将不会自动 <code>rem</code> 转换</p>
+<pre><code>module.exports = {
+  plugins: {
+    'autoprefixer': {
+      overrideBrowserslist: [
+        'Android 4.1',
+        'iOS 7.1',
+        'Chrome &gt; 31',
+        'ff &gt; 31',
+        'ie &gt;= 8'
+      ]
+    },
+    'postcss-pxtorem': {
+      rootValue: 37.5,
+      propList: ['*'],
+      selectorBlackList: ['.van-notify',],
+    }
+  }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">安装插件</a></li>
+<li><a href="#%E5%BC%95%E5%85%A5%E6%8F%92%E4%BB%B6">引入插件</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">创建配置文件</a></li>
+<li><a href="#%E9%BB%91%E5%90%8D%E5%8D%95">黑名单</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  @<a href="https://github.com/fineNineJun" target="_blank" style="padding-left: 5px;">fineNineJun</a>
+  <a class="rss" href="https://fineninejun.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

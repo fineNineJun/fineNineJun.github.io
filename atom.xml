@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://fineninejun.github.io</id>
+    <title>{ 59-Jun }</title>
+    <updated>2022-04-08T06:48:30.841Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://fineninejun.github.io"/>
+    <link rel="self" href="https://fineninejun.github.io/atom.xml"/>
+    <subtitle>所有事情到最後都是好的，如果不是，那說明還沒有到最後…</subtitle>
+    <logo>https://fineninejun.github.io/images/avatar.png</logo>
+    <icon>https://fineninejun.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, { 59-Jun }</rights>
+    <entry>
+        <title type="html"><![CDATA[Html文本溢出省略字符]]></title>
+        <id>https://fineninejun.github.io/post/html-wen-ben-yi-chu-sheng-lue-zi-fu/</id>
+        <link href="https://fineninejun.github.io/post/html-wen-ben-yi-chu-sheng-lue-zi-fu/">
+        </link>
+        <updated>2022-04-08T02:34:57.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Web直传AliyunOss]]></title>
+        <id>https://fineninejun.github.io/post/web-zhi-chuan-aliyunoss1/</id>
+        <link href="https://fineninejun.github.io/post/web-zhi-chuan-aliyunoss1/">
+        </link>
+        <updated>2022-04-01T01:28:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近开发的一个项目上传的资源较多，所以用到了阿里云的对象存储。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近开发的一个项目上传的资源较多，所以用到了阿里云的对象存储。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[layui分片上传超大文件（以上传视频为例）]]></title>
+        <id>https://fineninejun.github.io/post/layui-fen-pian-shang-chuan-chao-da-wen-jian-yi-shi-pin-wei-li/</id>
+        <link href="https://fineninejun.github.io/post/layui-fen-pian-shang-chuan-chao-da-wen-jian-yi-shi-pin-wei-li/">
+        </link>
+        <updated>2022-03-18T03:45:24.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p><code>layui</code> + <code>thinkphp</code> 分片上传超大视频，分片上传的意义在于把一个文件分成多份，一片一片的上传。当某一片上传失败时可以记录下来，进行重传或者其他处理，分片的附带好处还能很方便的实现进度条。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p><code>layui</code> + <code>thinkphp</code> 分片上传超大视频，分片上传的意义在于把一个文件分成多份，一片一片的上传。当某一片上传失败时可以记录下来，进行重传或者其他处理，分片的附带好处还能很方便的实现进度条。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[宝塔面板安装 xlsxwriter 扩展]]></title>
+        <id>https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-xlsxwriter-kuo-zhan/</id>
+        <link href="https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-xlsxwriter-kuo-zhan/">
+        </link>
+        <updated>2022-03-03T01:36:55.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p><code>xlsxwriter</code> 是一个 <code>PHP</code> <code>C</code> 扩展，可用于将文本、数字、公式和超链接写入 <code>Excel 2007</code> + <code>XLSX</code> 文件中的多个工作表。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p><code>xlsxwriter</code> 是一个 <code>PHP</code> <code>C</code> 扩展，可用于将文本、数字、公式和超链接写入 <code>Excel 2007</code> + <code>XLSX</code> 文件中的多个工作表。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[宝塔面板安装 sqlsrv 扩展]]></title>
+        <id>https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-sqlsrv-kuo-zhan/</id>
+        <link href="https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-sqlsrv-kuo-zhan/">
+        </link>
+        <updated>2022-03-02T10:00:50.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>宝塔面板安装 <code>sqlsrv</code> 扩展，<code>php=7.3</code></p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>宝塔面板安装 <code>sqlsrv</code> 扩展，<code>php=7.3</code></p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PHP 过滤特殊符号]]></title>
+        <id>https://fineninejun.github.io/post/php-guo-lu-te-shu-fu-hao/</id>
+        <link href="https://fineninejun.github.io/post/php-guo-lu-te-shu-fu-hao/">
+        </link>
+        <updated>2022-03-02T09:59:30.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>过滤特殊字符，仅保留中文、字母、数字、下划线</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>过滤特殊字符，仅保留中文、字母、数字、下划线</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 wkhtmltopdf和 pdf-merge 实现 Html 转 Pdf]]></title>
+        <id>https://fineninejun.github.io/post/shi-yong-wkhtmltopdf-he-pdf-merge-shi-xian-html-zhuan-pdf/</id>
+        <link href="https://fineninejun.github.io/post/shi-yong-wkhtmltopdf-he-pdf-merge-shi-xian-html-zhuan-pdf/">
+        </link>
+        <updated>2022-03-02T09:48:41.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>源于一个通过 <code>html</code> 转 <code>pdf</code> 的一个需求。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>源于一个通过 <code>html</code> 转 <code>pdf</code> 的一个需求。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[初识触发器]]></title>
+        <id>https://fineninejun.github.io/post/chu-shi-hong-fa-qi/</id>
+        <link href="https://fineninejun.github.io/post/chu-shi-hong-fa-qi/">
+        </link>
+        <updated>2022-03-02T09:19:02.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>触发器是与表有关的数据库对象，在满足定义条件时触发，并执行触发器中定义的语句集合。触发器的这种特性可以协助应用在数据库端确保数据的完整性。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>触发器是与表有关的数据库对象，在满足定义条件时触发，并执行触发器中定义的语句集合。触发器的这种特性可以协助应用在数据库端确保数据的完整性。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vue cli4引入vant并配置自动rem换算 postcss-pxtorem和lib-flexible + 黑名单]]></title>
+        <id>https://fineninejun.github.io/post/vue-cli4-yin-ru-vant-bing-pei-zhi-zi-dong-rem-huan-suan-postcss-pxtorem-he-lib-flexibl-hei-ming-dan/</id>
+        <link href="https://fineninejun.github.io/post/vue-cli4-yin-ru-vant-bing-pei-zhi-zi-dong-rem-huan-suan-postcss-pxtorem-he-lib-flexibl-hei-ming-dan/">
+        </link>
+        <updated>2022-03-02T09:02:37.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>在引入 <code>vant</code> 的时候，我看到官方推荐了两个自动转换 <code>px</code> 为 <code>rem</code> 的插件，一个叫 <code>postcss-pxtorem</code> ，一个叫 <code>lib-flexible</code> 。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>在引入 <code>vant</code> 的时候，我看到官方推荐了两个自动转换 <code>px</code> 为 <code>rem</code> 的插件，一个叫 <code>postcss-pxtorem</code> ，一个叫 <code>lib-flexible</code> 。</p>
+</blockquote>
+]]></content>
+    </entry>
+</feed>

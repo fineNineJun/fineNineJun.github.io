@@ -1,0 +1,261 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>使用 wkhtmltopdf和 pdf-merge 实现 Html 转 Pdf | { 59-Jun }</title>
+<link rel="shortcut icon" href="https://fineninejun.github.io/favicon.ico?v=1649400508282">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fineninejun.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="使用 wkhtmltopdf和 pdf-merge 实现 Html 转 Pdf | { 59-Jun } - Atom Feed" href="https://fineninejun.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+源于一个通过 html 转 pdf 的一个需求。
+
+
+安装 wkhtmltopdf
+windows 上使用 wkhtmltopdf
+在 wkhtmltopdf.org/downloads.html 上下载 win 版的安装程序，安装完毕后..." />
+    <meta name="keywords" content="php,wkhtmltopdf,pdf-merge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://fineninejun.github.io">
+  <img class="avatar" src="https://fineninejun.github.io/images/avatar.png?v=1649400508282" alt="">
+  </a>
+  <h1 class="site-title">
+    { 59-Jun }
+  </h1>
+  <p class="site-description">
+    所有事情到最後都是好的，如果不是，那說明還沒有到最後…
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/fineNineJun" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              使用 wkhtmltopdf和 pdf-merge 实现 Html 转 Pdf
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-03-02
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://fineninejun.github.io/tag/YJ6eaLBBX/" class="post-tag">
+                  # php
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/LCKK_r4uf9/" class="post-tag">
+                  # wkhtmltopdf
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/uSeqUaZA6t/" class="post-tag">
+                  # pdf-merge
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
+<p>源于一个通过 <code>html</code> 转 <code>pdf</code> 的一个需求。</p>
+</blockquote>
+<!-- more -->
+<h1 id="安装-wkhtmltopdf">安装 wkhtmltopdf</h1>
+<h2 id="windows-上使用-wkhtmltopdf">windows 上使用 wkhtmltopdf</h2>
+<p>在 <code>wkhtmltopdf.org/downloads.html</code> 上下载 <code>win</code> 版的安装程序，安装完毕后记录下这两个文件的本地地址</p>
+<pre><code>D:\app\wkhtmltopdf\bin\wkhtmltopdf
+D:\app\wkhtmltopdf\bin\wkhtmltoimage
+</code></pre>
+<h2 id="在-centos-7-上安装-wkhtmltopdf">在 CentOS 7 上安装 wkhtmltopdf</h2>
+<p>在 <code>CentOS</code> 上安装是最花费我时间的。建议在官网上下载（<code>rpm</code> 格式）然后上传至服务器，（期间试过多种方式，这种是一次性成功的）然后执行：</p>
+<pre><code>rpm -Uvh wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+</code></pre>
+<p>或</p>
+<pre><code>rpm -ivh wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+</code></pre>
+<p>安装完成后，查找一下安装路径（一般为 <code>/usr/local/bin</code>）</p>
+<pre><code>whereis wkhtmltopdf
+</code></pre>
+<p>然后执行命令:</p>
+<pre><code>sudo chmod +x /usr/local/bin/wkhtmltopdf
+</code></pre>
+<p>至此，安装完毕。<br>
+其实对于一般的 <code>html</code> 转 <code>pdf</code> 来说使用 <code>wkhtmltopdf</code> 就已经足够了。<br>
+但对于我当前的需求来说，<code>wkhtmltopdf</code> 提供的边距设置 <code>--margin-x</code> 无法满足我的需求设置，当四边距设置为 <code>0mm</code> 时，封面和尾页可以实现填充页面，当页眉页脚无法显示；当设置边距让页眉页脚显示，封面和尾页又无法填充页面。<br>
+所以最后决定将封面和尾页的 <code>pdf</code> 文件和 <code>wkhtmltopdf</code> 生成的内容合并</p>
+<h1 id="安装-pdf-merger">安装 pdf-merger:</h1>
+<p>这里我使用的时 <code>jurosh/pdf-merge (2.1.0)</code></p>
+<ul>
+<li>安装：</li>
+</ul>
+<pre><code>composer require jurosh/pdf-merge
+</code></pre>
+<ul>
+<li>添加依赖项：</li>
+</ul>
+<pre><code>&quot;jurosh/pdf-merge&quot;: &quot;^2.0&quot;
+</code></pre>
+<h1 id="wkhtmltopdf-生成-pdf-文件">wkhtmltopdf 生成 pdf 文件</h1>
+<h1 id="相关配置">相关配置</h1>
+<p><code>--enable-local-file-access</code> ： 允许加载本地文件<br>
+<code>--encoding &lt;UTF-8&gt;</code> : 设置编码<br>
+<code>--page-size &lt;A4&gt;</code> : 设置页面尺寸<br>
+<code>--margin-bottom &lt;10mm&gt;</code> : 下边距<br>
+<code>--margin-left &lt;0mm&gt;</code> : 左边距<br>
+<code>--margin-right &lt;0mm&gt;</code> : 右边距<br>
+<code>--margin-top &lt;22mm&gt;</code> : 上边距<br>
+<code>--header-html &lt;url&gt;</code> : 页眉链接<br>
+<code>--footer-html &lt;url&gt;</code> : 页脚链接<br>
+<code>--xsl-style-sheet &lt;url&gt;</code> : 自定义目录</p>
+<h1 id="合并-pdf">合并 pdf</h1>
+<pre><code class="language-php">// and now we can use library
+$pdf = new \Jurosh\PDFMerge\PDFMerger;
+
+// add as many pdfs as you want
+$pdf-&gt;addPDF('path/to/source/file.pdf', 'all', 'vertical')
+  -&gt;addPDF('path/to/source/file1.pdf', 'all')
+  -&gt;addPDF('path/to/source/file2.pdf', 'all', 'horizontal');
+
+// call merge, output format `file`
+$pdf-&gt;merge('file', 'path/to/export/dir/file.pdf');
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%AE%89%E8%A3%85-wkhtmltopdf">安装 wkhtmltopdf</a>
+<ul>
+<li><a href="#windows-%E4%B8%8A%E4%BD%BF%E7%94%A8-wkhtmltopdf">windows 上使用 wkhtmltopdf</a></li>
+<li><a href="#%E5%9C%A8-centos-7-%E4%B8%8A%E5%AE%89%E8%A3%85-wkhtmltopdf">在 CentOS 7 上安装 wkhtmltopdf</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85-pdf-merger">安装 pdf-merger:</a></li>
+<li><a href="#wkhtmltopdf-%E7%94%9F%E6%88%90-pdf-%E6%96%87%E4%BB%B6">wkhtmltopdf 生成 pdf 文件</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE">相关配置</a></li>
+<li><a href="#%E5%90%88%E5%B9%B6-pdf">合并 pdf</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fineninejun.github.io/post/chu-shi-hong-fa-qi/">
+              <h3 class="post-title">
+                初识触发器
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  @<a href="https://github.com/fineNineJun" target="_blank" style="padding-left: 5px;">fineNineJun</a>
+  <a class="rss" href="https://fineninejun.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

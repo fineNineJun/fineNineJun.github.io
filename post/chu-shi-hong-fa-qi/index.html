@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>初识触发器 | { 59-Jun }</title>
+<link rel="shortcut icon" href="https://fineninejun.github.io/favicon.ico?v=1649400508282">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fineninejun.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="初识触发器 | { 59-Jun } - Atom Feed" href="https://fineninejun.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+触发器是与表有关的数据库对象，在满足定义条件时触发，并执行触发器中定义的语句集合。触发器的这种特性可以协助应用在数据库端确保数据的完整性。
+
+
+CREATE DEFINER=`codeigniter01`@`localhost`
+TRIG..." />
+    <meta name="keywords" content="mysql,trigger" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://fineninejun.github.io">
+  <img class="avatar" src="https://fineninejun.github.io/images/avatar.png?v=1649400508282" alt="">
+  </a>
+  <h1 class="site-title">
+    { 59-Jun }
+  </h1>
+  <p class="site-description">
+    所有事情到最後都是好的，如果不是，那說明還沒有到最後…
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/fineNineJun" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              初识触发器
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-03-02
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://fineninejun.github.io/tag/mQiJ_45qd/" class="post-tag">
+                  # mysql
+                </a>
+              
+                <a href="https://fineninejun.github.io/tag/hZuKbT2IGM/" class="post-tag">
+                  # trigger
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
+<p>触发器是与表有关的数据库对象，在满足定义条件时触发，并执行触发器中定义的语句集合。触发器的这种特性可以协助应用在数据库端确保数据的完整性。</p>
+</blockquote>
+<!-- more -->
+<pre><code class="language-sql">CREATE DEFINER=`codeigniter01`@`localhost`
+TRIGGER `update_class_name`
+BEFORE UPDATE ON `test` FOR EACH ROW BEGIN
+DECLARE class_name VARCHAR(20) DEFAULT '';
+set class_name = (SELECT class from `class` where id=new.class_id);
+set new.class_name=class_name;
+END;
+</code></pre>
+<p>在 test 表更新前触发，根据 <code>class_id</code> 到 <code>class</code> 表中查询 <code>class</code> 字段，更新到 <code>test</code> 表中的 <code>class_name</code></p>
+<ul>
+<li>如果触发的操作是修改本表数据时，修改需要用一下语句，否则会造成循环调用：</li>
+</ul>
+<pre><code class="language-sql">set new.class_name='A班';
+</code></pre>
+<ul>
+<li>修改其他表数据时的语句：</li>
+</ul>
+<pre><code class="language-sql">update `表名` set NEW.列名 = '列值' where '条件';
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fineninejun.github.io/post/vue-cli4-yin-ru-vant-bing-pei-zhi-zi-dong-rem-huan-suan-postcss-pxtorem-he-lib-flexibl-hei-ming-dan/">
+              <h3 class="post-title">
+                vue cli4引入vant并配置自动rem换算 postcss-pxtorem和lib-flexible + 黑名单
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  @<a href="https://github.com/fineNineJun" target="_blank" style="padding-left: 5px;">fineNineJun</a>
+  <a class="rss" href="https://fineninejun.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
