@@ -1,0 +1,260 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>vue cli4引入vant并配置自动rem换算 postcss-pxtorem和lib-flexible + 黑名单 | { 59-Jun }</title>
+
+<link rel="shortcut icon" href="https://fineninejun.github.io/favicon.ico?v=1677746296606">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fineninejun.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            { 59-Jun }
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1677746296606"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    vue cli4引入vant并配置自动rem换算 postcss-pxtorem和lib-flexible + 黑名单
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-03-02 Wednesday ·
+                    </time>
+                    
+                        <a href="https://fineninejun.github.io/tag/ibsGhhMuTs_/" class="post-tags">
+                            # vue
+                        </a>
+                    
+                        <a href="https://fineninejun.github.io/tag/Jd9J1ivIXkL/" class="post-tags">
+                            # vant
+                        </a>
+                    
+                        <a href="https://fineninejun.github.io/tag/wenSaCRr6bP/" class="post-tags">
+                            # postcss-pxtorem
+                        </a>
+                    
+                        <a href="https://fineninejun.github.io/tag/DoVM9TPNTb1/" class="post-tags">
+                            # lib-flexible
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>在引入 <code>vant</code> 的时候，我看到官方推荐了两个自动转换 <code>px</code> 为 <code>rem</code> 的插件，一个叫 <code>postcss-pxtorem</code> ，一个叫 <code>lib-flexible</code> 。</p>
+</blockquote>
+<!-- more -->
+<h1 id="安装插件">安装插件</h1>
+<ul>
+<li>安装 <code>postcss-pxtorem</code></li>
+</ul>
+<pre><code>npm install postcss-pxtorem --save-dev
+</code></pre>
+<p>安装 <code>lib-flexible</code>，由于时间的问题， <code>lib-flexible</code> 其实已经弃用了，现在是使用名为 <code>amfe-flexible</code> 的插件， <code>amfe-flexible</code> 实际上就是在 <code>lib-flexible</code> 的基础上更新的，所以用法都是一样。</p>
+<pre><code>npm i -s  amfe-flexible
+</code></pre>
+<ul>
+<li>安装完毕只需要引入amfe-flexible</li>
+</ul>
+<h1 id="引入插件">引入插件</h1>
+<ul>
+<li><code>main.js</code> 文件引入：</li>
+</ul>
+<pre><code>import 'amfe-flexible'
+</code></pre>
+<h1 id="创建配置文件">创建配置文件</h1>
+<p>在根目录，和 <code>package.json</code> 同级，创建一个名为 <code>postcss.config.js</code> 的文件，然后里面的内容我直接照搬 <code>vant</code> 提供的。</p>
+<p>如果有这个文件，可以自行修改里面的内容，没有才创建。</p>
+<pre><code>module.exports = {
+  plugins: {
+    autoprefixer: {
+      browsers: ['Android &gt;= 4.0', 'iOS &gt;= 8'],
+    },
+    'postcss-pxtorem': {
+      rootValue: 37.5,
+      propList: ['*'],
+    },
+  },
+};
+</code></pre>
+<p>然后保存，这个时候我们再去 <code>vue</code> 里面，对元素设置 <code>px</code>，运行时会发现网页上自动转换成了 <code>rem</code> 单位。</p>
+<p>百度到一个新的配置</p>
+<pre><code>module.exports = {
+  plugins: {
+    'autoprefixer': {
+      overrideBrowserslist: [
+        'Android 4.1',
+        'iOS 7.1',
+        'Chrome &gt; 31',
+        'ff &gt; 31',
+        'ie &gt;= 8'
+      ]
+    },
+    'postcss-pxtorem': {
+      rootValue: 37.5,
+      propList: ['*']
+    }
+  }
+}
+</code></pre>
+<h1 id="黑名单">黑名单</h1>
+<p>顾名思义，在黑名单中的类名，将不会自动 <code>rem</code> 转换</p>
+<pre><code>module.exports = {
+  plugins: {
+    'autoprefixer': {
+      overrideBrowserslist: [
+        'Android 4.1',
+        'iOS 7.1',
+        'Chrome &gt; 31',
+        'ff &gt; 31',
+        'ie &gt;= 8'
+      ]
+    },
+    'postcss-pxtorem': {
+      rootValue: 37.5,
+      propList: ['*'],
+      selectorBlackList: ['.van-notify',],
+    }
+  }
+}
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://fineninejun.github.io/post/hello-gridea/" class="post-title gt-a-link">
+                    Hello Gridea
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">所有事情到最後都是好的，如果不是，那說明還沒有到最後…</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        @<a href="https://github.com/fineNineJun" target="_blank" style="padding-left: 5px;">fineNineJun</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://fineninejun.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

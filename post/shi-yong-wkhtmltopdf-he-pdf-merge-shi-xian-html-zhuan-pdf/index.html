@@ -1,0 +1,243 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>使用 wkhtmltopdf和 pdf-merge 实现 Html 转 Pdf | { 59-Jun }</title>
+
+<link rel="shortcut icon" href="https://fineninejun.github.io/favicon.ico?v=1677746296606">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fineninejun.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            { 59-Jun }
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1677746296606"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    使用 wkhtmltopdf和 pdf-merge 实现 Html 转 Pdf
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-03-02 Wednesday ·
+                    </time>
+                    
+                        <a href="https://fineninejun.github.io/tag/pVHrEIbQF/" class="post-tags">
+                            # php
+                        </a>
+                    
+                        <a href="https://fineninejun.github.io/tag/onokHHvpWw/" class="post-tags">
+                            # wkhtmltopdf
+                        </a>
+                    
+                        <a href="https://fineninejun.github.io/tag/JFDf07ZWkS/" class="post-tags">
+                            # pdf-merge
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>源于一个通过 <code>html</code> 转 <code>pdf</code> 的一个需求。</p>
+</blockquote>
+<!-- more -->
+<h1 id="安装-wkhtmltopdf">安装 wkhtmltopdf</h1>
+<h2 id="windows-上使用-wkhtmltopdf">windows 上使用 wkhtmltopdf</h2>
+<p>在 <code>wkhtmltopdf.org/downloads.html</code> 上下载 <code>win</code> 版的安装程序，安装完毕后记录下这两个文件的本地地址</p>
+<pre><code>D:\app\wkhtmltopdf\bin\wkhtmltopdf
+D:\app\wkhtmltopdf\bin\wkhtmltoimage
+</code></pre>
+<h2 id="在-centos-7-上安装-wkhtmltopdf">在 CentOS 7 上安装 wkhtmltopdf</h2>
+<p>在 <code>CentOS</code> 上安装是最花费我时间的。建议在官网上下载（<code>rpm</code> 格式）然后上传至服务器，（期间试过多种方式，这种是一次性成功的）然后执行：</p>
+<pre><code>rpm -Uvh wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+</code></pre>
+<p>或</p>
+<pre><code>rpm -ivh wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+</code></pre>
+<p>安装完成后，查找一下安装路径（一般为 <code>/usr/local/bin</code>）</p>
+<pre><code>whereis wkhtmltopdf
+</code></pre>
+<p>然后执行命令:</p>
+<pre><code>sudo chmod +x /usr/local/bin/wkhtmltopdf
+</code></pre>
+<h3 id="pdf出现乱码">pdf出现乱码</h3>
+<p>解决方法：复制 <code>C:\Windows\Fonts\simsun.ttc(宋体)</code> 上传到服务器 <code>/usr/share/fonts/simsun.ttc</code> .</p>
+<p>至此，安装完毕。<br>
+其实对于一般的 <code>html</code> 转 <code>pdf</code> 来说使用 <code>wkhtmltopdf</code> 就已经足够了。<br>
+但对于我当前的需求来说，<code>wkhtmltopdf</code> 提供的边距设置 <code>--margin-x</code> 无法满足我的需求设置，当四边距设置为 <code>0mm</code> 时，封面和尾页可以实现填充页面，当页眉页脚无法显示；当设置边距让页眉页脚显示，封面和尾页又无法填充页面。<br>
+所以最后决定将封面和尾页的 <code>pdf</code> 文件和 <code>wkhtmltopdf</code> 生成的内容合并</p>
+<h1 id="安装-pdf-merger">安装 pdf-merger:</h1>
+<p>这里我使用的时 <code>jurosh/pdf-merge (2.1.0)</code></p>
+<ul>
+<li>安装：</li>
+</ul>
+<pre><code>composer require jurosh/pdf-merge
+</code></pre>
+<ul>
+<li>添加依赖项：</li>
+</ul>
+<pre><code>&quot;jurosh/pdf-merge&quot;: &quot;^2.0&quot;
+</code></pre>
+<h1 id="wkhtmltopdf-生成-pdf-文件">wkhtmltopdf 生成 pdf 文件</h1>
+<h1 id="相关配置">相关配置</h1>
+<p><code>--enable-local-file-access</code> ： 允许加载本地文件<br>
+<code>--encoding &lt;UTF-8&gt;</code> : 设置编码<br>
+<code>--page-size &lt;A4&gt;</code> : 设置页面尺寸<br>
+<code>--margin-bottom &lt;10mm&gt;</code> : 下边距<br>
+<code>--margin-left &lt;0mm&gt;</code> : 左边距<br>
+<code>--margin-right &lt;0mm&gt;</code> : 右边距<br>
+<code>--margin-top &lt;22mm&gt;</code> : 上边距<br>
+<code>--header-html &lt;url&gt;</code> : 页眉链接<br>
+<code>--footer-html &lt;url&gt;</code> : 页脚链接<br>
+<code>--xsl-style-sheet &lt;url&gt;</code> : 自定义目录</p>
+<h1 id="合并-pdf">合并 pdf</h1>
+<pre><code class="language-php">// and now we can use library
+$pdf = new \Jurosh\PDFMerge\PDFMerger;
+
+// add as many pdfs as you want
+$pdf-&gt;addPDF('path/to/source/file.pdf', 'all', 'vertical')
+  -&gt;addPDF('path/to/source/file1.pdf', 'all')
+  -&gt;addPDF('path/to/source/file2.pdf', 'all', 'horizontal');
+
+// call merge, output format `file`
+$pdf-&gt;merge('file', 'path/to/export/dir/file.pdf');
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://fineninejun.github.io/post/chu-shi-hong-fa-qi/" class="post-title gt-a-link">
+                    初识触发器
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">所有事情到最後都是好的，如果不是，那說明還沒有到最後…</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        @<a href="https://github.com/fineNineJun" target="_blank" style="padding-left: 5px;">fineNineJun</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://fineninejun.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

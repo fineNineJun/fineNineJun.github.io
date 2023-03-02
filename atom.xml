@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://fineninejun.github.io</id>
+    <title>{ 59-Jun }</title>
+    <updated>2023-03-02T08:38:19.470Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://fineninejun.github.io"/>
+    <link rel="self" href="https://fineninejun.github.io/atom.xml"/>
+    <subtitle>所有事情到最後都是好的，如果不是，那說明還沒有到最後…</subtitle>
+    <logo>https://fineninejun.github.io/images/avatar.png</logo>
+    <icon>https://fineninejun.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, { 59-Jun }</rights>
+    <entry>
+        <title type="html"><![CDATA[Html CheckBox 实现全选、取消全选]]></title>
+        <id>https://fineninejun.github.io/post/html-checkbox-shi-xian-quan-xuan-qu-xiao-quan-xuan/</id>
+        <link href="https://fineninejun.github.io/post/html-checkbox-shi-xian-quan-xuan-qu-xiao-quan-xuan/">
+        </link>
+        <updated>2023-03-02T08:08:52.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端登录交互明文传输使用base64加密，PHP解密]]></title>
+        <id>https://fineninejun.github.io/post/qian-duan-deng-lu-jiao-hu-ming-wen-chuan-shu-shi-yong-base64-jia-mi-php-jie-mi/</id>
+        <link href="https://fineninejun.github.io/post/qian-duan-deng-lu-jiao-hu-ming-wen-chuan-shu-shi-yong-base64-jia-mi-php-jie-mi/">
+        </link>
+        <updated>2022-09-29T02:57:55.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="base64-加密和解密">Base64 加密和解密</h1>
+<blockquote>
+<p>base64是通用的加解密方法，JavaScript也有现成的库可以使用，PHP更是有现成函数可用。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="base64-加密和解密">Base64 加密和解密</h1>
+<blockquote>
+<p>base64是通用的加解密方法，JavaScript也有现成的库可以使用，PHP更是有现成函数可用。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Thinkphp5原生查询分页]]></title>
+        <id>https://fineninejun.github.io/post/thinkphp5-yuan-sheng-cha-xun-fen-ye/</id>
+        <link href="https://fineninejun.github.io/post/thinkphp5-yuan-sheng-cha-xun-fen-ye/">
+        </link>
+        <updated>2022-09-26T03:57:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近有个项目用的是 <code>thinkphp V5.0.0</code> , 因为需要对字符串进行排序需要用到 <code>mysql</code> 中的 <code>CAST</code> 函数，看了下<a href="https://www.kancloud.cn/manual/thinkphp5">TP文档</a>，发现  <code>orderRaw</code> 函数，但 <code>orderRaw</code> 需要框架为 <code>V5.0.17+</code>，担心升级框架会对原系统有影响，所以想到了可以用原生查询。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近有个项目用的是 <code>thinkphp V5.0.0</code> , 因为需要对字符串进行排序需要用到 <code>mysql</code> 中的 <code>CAST</code> 函数，看了下<a href="https://www.kancloud.cn/manual/thinkphp5">TP文档</a>，发现  <code>orderRaw</code> 函数，但 <code>orderRaw</code> 需要框架为 <code>V5.0.17+</code>，担心升级框架会对原系统有影响，所以想到了可以用原生查询。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Html文本溢出省略字符]]></title>
+        <id>https://fineninejun.github.io/post/html-wen-ben-yi-chu-sheng-lue-zi-fu/</id>
+        <link href="https://fineninejun.github.io/post/html-wen-ben-yi-chu-sheng-lue-zi-fu/">
+        </link>
+        <updated>2022-04-08T02:34:57.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Web直传AliyunOss]]></title>
+        <id>https://fineninejun.github.io/post/web-zhi-chuan-aliyunoss1/</id>
+        <link href="https://fineninejun.github.io/post/web-zhi-chuan-aliyunoss1/">
+        </link>
+        <updated>2022-04-01T01:28:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近开发的一个项目上传的资源较多，所以用到了阿里云的对象存储。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近开发的一个项目上传的资源较多，所以用到了阿里云的对象存储。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[layui分片上传超大文件（以上传视频为例）]]></title>
+        <id>https://fineninejun.github.io/post/layui-fen-pian-shang-chuan-chao-da-wen-jian-yi-shi-pin-wei-li/</id>
+        <link href="https://fineninejun.github.io/post/layui-fen-pian-shang-chuan-chao-da-wen-jian-yi-shi-pin-wei-li/">
+        </link>
+        <updated>2022-03-18T03:45:24.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p><code>layui</code> + <code>thinkphp</code> 分片上传超大视频，分片上传的意义在于把一个文件分成多份，一片一片的上传。当某一片上传失败时可以记录下来，进行重传或者其他处理，分片的附带好处还能很方便的实现进度条。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p><code>layui</code> + <code>thinkphp</code> 分片上传超大视频，分片上传的意义在于把一个文件分成多份，一片一片的上传。当某一片上传失败时可以记录下来，进行重传或者其他处理，分片的附带好处还能很方便的实现进度条。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[宝塔面板安装 xlsxwriter 扩展]]></title>
+        <id>https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-xlsxwriter-kuo-zhan/</id>
+        <link href="https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-xlsxwriter-kuo-zhan/">
+        </link>
+        <updated>2022-03-03T01:36:55.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p><code>xlsxwriter</code> 是一个 <code>PHP</code> <code>C</code> 扩展，可用于将文本、数字、公式和超链接写入 <code>Excel 2007</code> + <code>XLSX</code> 文件中的多个工作表。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p><code>xlsxwriter</code> 是一个 <code>PHP</code> <code>C</code> 扩展，可用于将文本、数字、公式和超链接写入 <code>Excel 2007</code> + <code>XLSX</code> 文件中的多个工作表。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[宝塔面板安装 sqlsrv 扩展]]></title>
+        <id>https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-sqlsrv-kuo-zhan/</id>
+        <link href="https://fineninejun.github.io/post/bao-ta-mian-ban-an-zhuang-sqlsrv-kuo-zhan/">
+        </link>
+        <updated>2022-03-02T10:00:50.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>宝塔面板安装 <code>sqlsrv</code> 扩展，<code>php=7.3</code></p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>宝塔面板安装 <code>sqlsrv</code> 扩展，<code>php=7.3</code></p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PHP 过滤特殊符号]]></title>
+        <id>https://fineninejun.github.io/post/php-guo-lu-te-shu-fu-hao/</id>
+        <link href="https://fineninejun.github.io/post/php-guo-lu-te-shu-fu-hao/">
+        </link>
+        <updated>2022-03-02T09:59:30.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>过滤特殊字符，仅保留中文、字母、数字、下划线</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>过滤特殊字符，仅保留中文、字母、数字、下划线</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 wkhtmltopdf和 pdf-merge 实现 Html 转 Pdf]]></title>
+        <id>https://fineninejun.github.io/post/shi-yong-wkhtmltopdf-he-pdf-merge-shi-xian-html-zhuan-pdf/</id>
+        <link href="https://fineninejun.github.io/post/shi-yong-wkhtmltopdf-he-pdf-merge-shi-xian-html-zhuan-pdf/">
+        </link>
+        <updated>2022-03-02T09:48:41.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>源于一个通过 <code>html</code> 转 <code>pdf</code> 的一个需求。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>源于一个通过 <code>html</code> 转 <code>pdf</code> 的一个需求。</p>
+</blockquote>
+]]></content>
+    </entry>
+</feed>

@@ -1,0 +1,446 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Html文本溢出省略字符 | { 59-Jun }</title>
+
+<link rel="shortcut icon" href="https://fineninejun.github.io/favicon.ico?v=1677746296606">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fineninejun.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            { 59-Jun }
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1677746296606"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Html文本溢出省略字符
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-04-08 Friday ·
+                    </time>
+                    
+                        <a href="https://fineninejun.github.io/tag/CXfrn16vUL/" class="post-tags">
+                            # html
+                        </a>
+                    
+                        <a href="https://fineninejun.github.io/tag/h1sZlmQEnc/" class="post-tags">
+                            # css
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <pre><code class="language-css">display: -webkit-box;
+display: -moz-box;
+white-space: pre-wrap;
+word-wrap: break-word;
+overflow: hidden;
+text-overflow: ellipsis;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+</code></pre>
+<h1 id="属性说明">属性说明</h1>
+<h2 id="display">display</h2>
+<h3 id="定义">定义</h3>
+<p>设置元素应该生成的框的类型。</p>
+<h3 id="可传值">可传值</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>此元素不会被显示。</td>
+</tr>
+<tr>
+<td>block</td>
+<td>此元素将显示为块级元素，此元素前后会带有换行符。</td>
+</tr>
+<tr>
+<td>inline</td>
+<td>默认。此元素会被显示为内联元素，元素前后没有换行符。</td>
+</tr>
+<tr>
+<td>inline-block</td>
+<td>行内块元素。（CSS2.1 新增的值）</td>
+</tr>
+<tr>
+<td>list-item</td>
+<td>此元素会作为列表显示。</td>
+</tr>
+<tr>
+<td>run-in</td>
+<td>此元素会根据上下文作为块级元素或内联元素显示。</td>
+</tr>
+<tr>
+<td>compact</td>
+<td>CSS 中有值 compact，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>CSS 中有值 marker，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。</td>
+</tr>
+<tr>
+<td>table</td>
+<td>此元素会作为块级表格来显示（类似 <code>&lt;table&gt;</code>），表格前后带有换行符。</td>
+</tr>
+<tr>
+<td>inline-table</td>
+<td>此元素会作为内联表格来显示（类似 <code>&lt;table&gt;</code>），表格前后没有换行符。</td>
+</tr>
+<tr>
+<td>table-row-group</td>
+<td>此元素会作为一个或多个行的分组来显示（类似 <code>&lt;tbody&gt;</code>）。</td>
+</tr>
+<tr>
+<td>table-header-group</td>
+<td>此元素会作为一个或多个行的分组来显示（类似 <code>&lt;thead&gt;</code>）。</td>
+</tr>
+<tr>
+<td>table-footer-group</td>
+<td>此元素会作为一个或多个行的分组来显示（类似 <code>&lt;tfoot&gt;</code>）。</td>
+</tr>
+<tr>
+<td>table-row</td>
+<td>此元素会作为一个表格行显示（类似 <code>&lt;tr&gt;</code>）。</td>
+</tr>
+<tr>
+<td>table-column-group</td>
+<td>此元素会作为一个或多个列的分组来显示（类似 <code>&lt;colgroup&gt;</code>）。</td>
+</tr>
+<tr>
+<td>table-column</td>
+<td>此元素会作为一个单元格列显示（类似 <code>&lt;col&gt;</code>）</td>
+</tr>
+<tr>
+<td>table-cell</td>
+<td>此元素会作为一个表格单元格显示（类似 <code>&lt;td&gt;</code> 和 <code>&lt;th&gt;</code>）</td>
+</tr>
+<tr>
+<td>table-caption</td>
+<td>此元素会作为一个表格标题显示（类似 <code>&lt;caption&gt;</code>）</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 display 属性的值。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="white-space">white-space</h2>
+<h3 id="定义-2">定义</h3>
+<p>设置如何处理元素内的空白。</p>
+<h3 id="可传值-2">可传值</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal</td>
+<td>默认。空白会被浏览器忽略。</td>
+</tr>
+<tr>
+<td>pre</td>
+<td>空白会被浏览器保留。其行为方式类似 HTML 中的 <code>&lt;pre&gt;</code> 标签。</td>
+</tr>
+<tr>
+<td>nowrap</td>
+<td>文本不会换行，文本会在在同一行上继续，直到遇到 <code>&lt;br&gt;</code> 标签为止。</td>
+</tr>
+<tr>
+<td>pre-wrap</td>
+<td>保留空白符序列，但是正常地进行换行。</td>
+</tr>
+<tr>
+<td>pre-line</td>
+<td>合并空白符序列，但是保留换行符。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 <code>white-space</code> 属性的值。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="word-wrap">word-wrap</h2>
+<h3 id="定义-3">定义</h3>
+<p>设置允许长单词或 URL 地址换行到下一行。</p>
+<h3 id="可传值-3">可传值</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal</td>
+<td>只在允许的断字点换行（浏览器保持默认处理）。</td>
+</tr>
+<tr>
+<td>break-word</td>
+<td>在长单词或 URL 地址内部进行换行。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="overflow">overflow</h2>
+<h3 id="定义-4">定义</h3>
+<p>设置当内容溢出元素框时发生的事情。</p>
+<h3 id="可传值-4">可传值</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visible</td>
+<td>默认值。内容不会被修剪，会呈现在元素框之外。</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>内容会被修剪，并且其余内容是不可见的。</td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 overflow 属性的值。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text-overflow">text-overflow</h2>
+<h3 id="定义-5">定义</h3>
+<p>设置规定当文本溢出包含元素时发生的事情。</p>
+<h3 id="可传值-5">可传值</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clip</td>
+<td>修剪文本。</td>
+</tr>
+<tr>
+<td>ellipsis</td>
+<td>显示省略符号来代表被修剪的文本。</td>
+</tr>
+<tr>
+<td>string</td>
+<td>使用给定的字符串来代表被修剪的文本。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-webkit-box-orient">-webkit-box-orient</h2>
+<h3 id="定义-6">定义</h3>
+<p>设置一个box子元素是否应按水平或垂直排列。</p>
+<h3 id="可传值-6">可传值</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>horizontal</td>
+<td>指定子元素在一个水平线上从左至右排列</td>
+</tr>
+<tr>
+<td>vertical</td>
+<td>从顶部向底部垂直布置子元素</td>
+</tr>
+<tr>
+<td>inline-axis</td>
+<td>子元素沿着内联坐标轴（映射到横向）</td>
+</tr>
+<tr>
+<td>block-axis</td>
+<td>子元素沿着块坐标轴（映射到垂直）</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>box-orient 属性的值应该从父元素继承</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-webkit-line-clamp">-webkit-line-clamp</h2>
+<h3 id="定义-7">定义</h3>
+<p>设置块元素显示的文本的行数。</p>
+<h3 id="可传值-7">可传值</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>块元素显示的文本的行数</td>
+</tr>
+</tbody>
+</table>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://fineninejun.github.io/post/web-zhi-chuan-aliyunoss1/" class="post-title gt-a-link">
+                    Web直传AliyunOss
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">所有事情到最後都是好的，如果不是，那說明還沒有到最後…</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        @<a href="https://github.com/fineNineJun" target="_blank" style="padding-left: 5px;">fineNineJun</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://fineninejun.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
